@@ -1,0 +1,25 @@
+.NavbarDark {
+  background-color: rgba(11, 19, 23, 0.8);
+  backdrop-filter: blur(15px);
+  padding: 1.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.BrandText {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+}
+
+.NavLinkCustom {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+}
+
+.NavLinkCustom:hover, .ActiveLink {
+  color: var(--accent-green) !important;
+}

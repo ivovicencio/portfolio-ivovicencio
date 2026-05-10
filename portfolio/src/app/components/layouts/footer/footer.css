@@ -1,0 +1,104 @@
+.FooterComplex {
+  background-color: var(--bg-surface);
+  position: relative;
+  overflow: hidden;
+  /* Un degradado sutil para que no sea un color plano */
+  background: linear-gradient(to bottom, #10181c, #070c0f);
+}
+
+.NeonDivider {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+  box-shadow: 0 0 15px var(--accent-green);
+  opacity: 0.5;
+}
+
+.FooterBrand {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #fff;
+}
+
+.LocationText {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Navegación del Footer */
+.FooterNav li a {
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.FooterNav li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent-green);
+  transition: width 0.3s ease;
+}
+
+.FooterNav li a:hover {
+  color: var(--accent-green);
+}
+
+.FooterNav li a:hover::after {
+  width: 100%;
+}
+
+/* Iconos de Cristal (Glassmorphism) */
+.GlassIcon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: 1.3rem;
+  backdrop-filter: blur(5px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.GlassIcon:hover {
+  background: rgba(74, 222, 128, 0.1);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: translateY(-8px) rotate(8deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.BottomText {
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  margin: 0;
+  opacity: 0.6;
+}
+
+/* Efecto de luz ambiental en el footer */
+.FooterComplex::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--accent-green);
+  filter: blur(150px);
+  opacity: 0.05;
+  bottom: -150px;
+  right: -100px;
+}
