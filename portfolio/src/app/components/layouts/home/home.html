@@ -1,18 +1,37 @@
-<section class="HeroSection d-flex align-items-center justify-content-center">
-  <div class="GreenSmoke"></div>
+<section class="HeroGalaxyContainer">
+  
+  <div class="NebulaSmoke"></div>
+  <div class="StarsBackground"></div>
 
-  <div class="TechOrbitContainer">
-    <div class="OrbitRing"></div>
+  <div class="SolarSystem">
     
-    <div class="AvatarCenter">
-      <div class="PhotoInner">
-        <i class="bi bi-person-fill fs-1 TextAccent"></i>
+    <div class="CentralCore">
+      <div class="ImageMask">
+        <img src="assets/hero-center.png" alt="Full Stack Developer" class="AvatarImage">
       </div>
+      <div class="CoreGlow"></div>
     </div>
-    
-    <div class="OrbitItem ItemAngular" title="Angular"><i class="bi bi-triangle-half"></i></div>
-    <div class="OrbitItem ItemJs" title="JavaScript"><strong>JS</strong></div>
-    <div class="OrbitItem ItemNode" title="Node.js"><i class="bi bi-diagram-2"></i></div>
-    <div class="OrbitItem ItemJava" title="Java"><i class="bi bi-cup-hot"></i></div>
+
+    <div class="OrbitalRing" [style.transform]="'rotateX(75deg) rotateZ(' + systemRotation + 'deg)'">
+      
+      <div *ngFor="let tech of technologies; let i = index" 
+           class="PlanetaryIcon"
+           [class.SelectedTech]="i === selectedTechIndex"
+           [style.transform]="'rotateZ(' + tech.angle + 'deg) translateX(340px) rotateZ(' + (-tech.angle - systemRotation) + 'deg) rotateX(-75deg)'"
+           (click)="selectTech(i)"
+           [title]="tech.name">
+        <div class="IconInner">
+            <img [src]="tech.logo" [alt]="tech.name">
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <div class="HeroTextMinimal">
+    <h1 class="TitleMinimal">IVO VICENCIO</h1>
+    <h2 class="SubtitleMinimal">FULL STACK DEVELOPER</h2>
+    <p class="LocationMinimal">JUJUY & NEUQUÉN, ARGENTINA</p>
+  </div>
+
 </section>

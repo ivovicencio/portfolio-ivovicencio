@@ -1,94 +1,181 @@
-.HeroSection {
-  position: relative;
-  min-height: 100vh;
+.HeroGalaxyContainer {
+  height: 100vh;
   background-color: var(--bg-dark);
+  position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 
-.GreenSmoke {
+.NebulaSmoke {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 800px;
+  height: 800px;
+  background: var(--accent-green);
+  filter: blur(250px);
+  opacity: 0.12;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.StarsBackground {
+  position: absolute;
+  width: 100%; height: 100%;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.08;
+  z-index: 0;
+}
+
+/* AQUÍ SUCEDE LA MAGIA 3D */
+.SolarSystem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px; /* Profundidad de la cámara */
+  transform-style: preserve-3d; /* Activa el renderizado 3D real */
+  z-index: 10;
+}
+
+.CentralCore {
+  position: absolute;
+  width: 380px; 
+  /* CLAVE: Evita que el contenedor cuadrado invisible tape los íconos */
+  pointer-events: none; 
+  transform: translateZ(0); /* Se planta en el centro exacto del universo */
+  filter: drop-shadow(0 0 40px rgba(74, 222, 128, 0.15));
+}
+
+.ImageMask {
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 98%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 98%);
+}
+
+.AvatarImage {
+  width: 100%;
+  height: auto;
+  animation: floating 8s ease-in-out infinite;
+}
+
+.CoreGlow {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 250px; height: 250px;
   background: var(--accent-green);
   border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.15;
-  top: 50%;
-  left: 50%;
+  filter: blur(80px);
+  opacity: 0.2;
   transform: translate(-50%, -50%);
+  z-index: -1;
 }
 
-.TechOrbitContainer {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.OrbitRing {
+/* LA ÓRBITA INCLINADA Y ESTILIZADA */
+.OrbitalRing {
   position: absolute;
+  width: 680px; /* Ampliado para que los íconos se alejen más de tu foto */
+  height: 680px;
+  border: 2px dashed rgba(74, 222, 128, 0.25);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* LOS ÍCONOS MANTENIDOS DE PIE */
+.PlanetaryIcon {
+  position: absolute;
+  top: 50%; left: 50%;
+  margin-top: -35px;
+  margin-left: -35px;
+  width: 70px;
+  height: 70px;
+  /* CLAVE: Rehabilitamos el clic que desactivamos en la foto central */
+  pointer-events: auto; 
+  cursor: pointer;
+}
+
+.IconInner {
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(74, 222, 128, 0.2);
+  background: var(--bg-surface);
+  border: 2px solid rgba(74, 222, 128, 0.4);
   border-radius: 50%;
-  /* Animación suave de rotación */
-  animation: spin 20s linear infinite;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
 }
 
-.AvatarCenter {
-  position: relative;
-  z-index: 10;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: #000;
-  padding: 5px;
-  border: 1px solid var(--accent-green);
-  box-shadow: 0 0 50px rgba(74, 222, 128, 0.2);
-}
-
-.PhotoInner {
+.IconInner img {
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: var(--bg-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  height: auto;
+  object-fit: contain;
 }
 
-.OrbitItem {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: var(--bg-surface);
-  border: 1px solid rgba(74, 222, 128, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-primary);
-  font-size: 1.4rem;
-  z-index: 15;
-  transition: all 0.4s ease;
-}
-
-.OrbitItem:hover {
+.PlanetaryIcon:hover .IconInner {
   border-color: var(--accent-green);
-  box-shadow: 0 0 20px var(--accent-green);
-  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(74, 222, 128, 0.6);
+  transform: scale(1.15);
 }
 
-/* Posicionamiento en los ejes */
-.ItemAngular { top: 0; left: 50%; transform: translate(-50%, -50%); }
-.ItemJs { top: 50%; right: 0; transform: translate(50%, -50%); }
-.ItemNode { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
-.ItemJava { top: 50%; left: 0; transform: translate(-50%, -50%); }
+.PlanetaryIcon.SelectedTech .IconInner {
+  border-color: var(--accent-green);
+  background: rgba(74, 222, 128, 0.15);
+  box-shadow: 0 0 35px var(--accent-green);
+  animation: techPulse 1.5s infinite;
+  transform: scale(1.2);
+}
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.HeroTextMinimal {
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+  width: 100%;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.TitleMinimal {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.SubtitleMinimal {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 8px;
+  margin-top: 8px;
+}
+
+.LocationMinimal {
+  font-size: 0.7rem;
+  color: var(--accent-green);
+  letter-spacing: 5px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes techPulse {
+  0% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(74, 222, 128, 0.8); }
+  100% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.4); }
 }

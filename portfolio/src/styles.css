@@ -1,59 +1,38 @@
 :root {
-  /* Paleta de Colores Principal */
-  --bg-dark: #0b1317;
-  --bg-surface: #10181c;
+  --bg-dark: #070c0f;
+  --bg-surface: #0b1317;
   --accent-green: #4ade80;
   --text-primary: #ffffff;
   --text-secondary: #a0aec0;
-
-  /* Fuentes */
-  --font-main: 'Montserrat', sans-serif;
 }
 
 body {
   background-color: var(--bg-dark);
   color: var(--text-primary);
-  font-family: var(--font-main);
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
 }
 
-/* Enlaces globales */
-a {
-  color: var(--accent-green);
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-}
+/* Scrollbar personalizada */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--accent-green); border-radius: 10px; }
 
-a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 8px var(--accent-green);
-}
+.TextAccent { color: var(--accent-green) !important; }
 
-/* Clases utilitarias para reutilizar en tus componentes */
-.TextAccent {
-  color: var(--accent-green) !important;
-}
-
-.BgSurface {
-  background-color: var(--bg-surface) !important;
-}
-
-/* Botón principal estilo futurista */
 .BtnNeon {
-  background-color: transparent;
+  border: 1px solid var(--accent-green);
   color: var(--accent-green);
-  border: 2px solid var(--accent-green);
-  padding: 10px 24px;
+  padding: 8px 20px;
+  text-decoration: none;
   font-weight: 600;
   border-radius: 4px;
-  transition: all 0.3s ease-in-out;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
 .BtnNeon:hover {
-  background-color: var(--accent-green);
+  background: var(--accent-green);
   color: var(--bg-dark);
-  box-shadow: 0 0 15px var(--accent-green);
+  box-shadow: 0 0 20px var(--accent-green);
 }

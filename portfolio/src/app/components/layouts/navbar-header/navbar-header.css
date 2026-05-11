@@ -1,25 +1,10 @@
-.NavbarDark {
-  background-color: rgba(11, 19, 23, 0.8);
-  backdrop-filter: blur(15px);
-  padding: 1.5rem 0;
-  transition: all 0.3s ease;
+.NavbarGlass {
+  background: rgba(7, 12, 15, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.BrandText {
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--text-primary);
-  letter-spacing: 2px;
-}
-
-.NavLinkCustom {
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 1.5px;
-  text-decoration: none;
-}
-
-.NavLinkCustom:hover, .ActiveLink {
-  color: var(--accent-green) !important;
-}
+.Brand { font-weight: 900; color: #fff; letter-spacing: 2px; font-size: 1.4rem; text-decoration: none; }
+.NavCustom { color: var(--text-secondary); font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; }
+.ActiveLink { color: var(--accent-green) !important; }
