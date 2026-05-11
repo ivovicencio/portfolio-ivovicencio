@@ -25,7 +25,7 @@ export class HomeComponent {
     { name: 'Node.js', logo: 'assets/nodejs-logo.png', angle: 120 },
     { name: 'Java', logo: 'assets/java-logo.png', angle: 180 },
     { name: 'JavaScript', logo: 'assets/js-logo.png', angle: 240 },
-    { name: 'C#', logo: 'assets/c#-logo.png', angle: 300 },
+    { name: 'C#', logo: 'assets/c%23-logo.png', angle: 300 },
   ];
 
   selectTech(index: number) {
