@@ -1,1 +1,85 @@
-<p>home works!</p>
+<section class="HeroGalaxyContainer">
+  <div class="NebulaSmoke"></div>
+  <div class="StarsBackground"></div>
+
+  <div class="SolarSystem">
+    <div class="CentralCore" (click)="toggleProfile()">
+      <div class="ImageMask">
+        <img src="assets/hero-center.png" alt="Ivo Vicencio" class="AvatarImage">
+        <div class="ClickHint">STATUS_</div>
+      </div>
+      <div class="CoreGlow"></div>
+    </div>
+
+    <div class="OrbitalRing" [style.transform]="'rotateX(75deg) rotateZ(' + systemRotation + 'deg)'">
+      <div *ngFor="let tech of technologies; let i = index" 
+           class="PlanetaryIcon"
+           [class.SelectedTech]="i === selectedTechIndex"
+           [style.transform]="'rotateZ(' + tech.angle + 'deg) translateX(420px) rotateZ(' + (-tech.angle - systemRotation) + 'deg) rotateX(-75deg)'"
+           (click)="selectTech(i); $event.stopPropagation()">
+        <div class="IconInner">
+            <img [src]="tech.logo" [alt]="tech.name">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="StatusOverlay" *ngIf="isProfileOpen" (click)="toggleProfile()">
+    <div class="StatusWindow" (click)="$event.stopPropagation()">
+        <div class="WindowHeader">ESTADO</div>
+        
+        <div class="InfoRow">
+            <span class="Label">NOMBRE:</span>
+            <span class="Value">IVO THAIEL VICENCIO ROSAS</span>
+        </div>
+        <div class="InfoRow">
+            <span class="Label">TRABAJO:</span>
+            <span class="Value">FULL STACK DEVELOPER</span>
+        </div>
+        <div class="InfoRow">
+            <span class="Label">TÍTULO:</span>
+            <span class="Value">ANALISTA PROGRAMADOR</span>
+        </div>
+        <div class="InfoRow">
+            <span class="Label">NIVEL:</span>
+            <span class="Value">24</span>
+        </div>
+
+        <div class="StatsDivider">APTITUDES_BLANDAS</div>
+        <div class="SoftSkillsGrid">
+            <div class="SkillBar"><p>COMUNICACIÓN EFECTIVA</p><div class="Bar"><div class="Fill" style="width: 90%;"></div></div></div>
+            <div class="SkillBar"><p>PENSAMIENTO CRÍTICO</p><div class="Bar"><div class="Fill" style="width: 95%;"></div></div></div>
+            <div class="SkillBar"><p>ADAPTABILIDAD</p><div class="Bar"><div class="Fill" style="width: 100%;"></div></div></div>
+            <div class="SkillBar"><p>TRABAJO EN EQUIPO</p><div class="Bar"><div class="Fill" style="width: 85%;"></div></div></div>
+        </div>
+
+        <div class="OriginData">
+            ORIGEN: NEUQUÉN // UBICACIÓN ACTUAL: JUJUY
+        </div>
+
+        <button class="StatusBtn" (click)="downloadCV()">DESCARGAR_CV.PDF</button>
+    </div>
+  </div>
+
+  <div class="SkillCardOverlay" *ngIf="isSkillOpen" (click)="closeSkill()">
+    <div class="SkillCard" (click)="$event.stopPropagation()">
+        <div class="SkillHeader">HABILIDAD RECONOCIDA</div>
+        <div class="SkillContent" *ngIf="selectedTech">
+            <img [src]="selectedTech.logo" class="SkillIcon">
+            <h3 class="SkillTitle">{{selectedTech.name}}</h3>
+            <p class="SkillDesc">{{selectedTech.description}}</p>
+            <div class="MasteryContainer">
+                <span>MAESTRÍA: {{selectedTech.level}}%</span>
+                <div class="MasteryBar"><div class="Fill" [style.width.%]="selectedTech.level"></div></div>
+            </div>
+        </div>
+        <button class="CloseSkill" (click)="closeSkill()">CERRAR_</button>
+    </div>
+  </div>
+
+  <div class="HeroTextMinimal" *ngIf="!isProfileOpen && !isSkillOpen">
+    <h1 class="TitleMinimal">IVO VICENCIO</h1>
+    <h2 class="SubtitleMinimal">FULL STACK DEVELOPER</h2>
+    <p class="LocationMinimal">JUJUY & NEUQUÉN, ARGENTINA</p>
+  </div>
+</section>
