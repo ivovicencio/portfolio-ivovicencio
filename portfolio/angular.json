@@ -32,7 +32,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/portfolio-ivovicencio/",
+              "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
