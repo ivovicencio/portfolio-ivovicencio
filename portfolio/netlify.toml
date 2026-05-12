@@ -1,27 +1,16 @@
-# Netlify Configuration
-# Build settings for deploying Angular portfolio to Netlify
-
 [build]
-  # Build command
   command = "npm run build:prod"
-  
-  # Directory to publish
   publish = "dist/portfolio/browser"
 
 [build.environment]
-  # Node version
   NODE_VERSION = "20"
-  
-  # NPM version
   NPM_VERSION = "11.9.0"
 
-# Redirect all non-file requests to index.html (for Angular routing)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Cache settings
 [[headers]]
   for = "/assets/*"
   [headers.values]
