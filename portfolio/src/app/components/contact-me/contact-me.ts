@@ -23,7 +23,6 @@ export class ContactMe implements OnInit {
   errorMessage = '';
 
   ngOnInit() {
-    // INICIALIZAMOS CON TU PUBLIC KEY
     emailjs.init('bLCSUBdBPb70rHOPO'); 
   }
 
@@ -36,7 +35,7 @@ export class ContactMe implements OnInit {
 
     this.sendStatus = 'sending';
 
-    // AJUSTADO PARA COINCIDIR EXACTAMENTE CON LAS VARIABLES DE TU TEMPLATE
+
     const templateParams = {
       name: this.contactData.name,         // Conecta con {{name}}
       email: this.contactData.email,       // Conecta con {{email}}
@@ -45,7 +44,6 @@ export class ContactMe implements OnInit {
       to_email: 'ivothaielvicencio@gmail.com'
     };
 
-    // ENVIAMOS USANDO TU SERVICE ID Y TEMPLATE ID
     emailjs.send('service_4kq4j07', 'template_fd4lwap', templateParams)
       .then(
         (response) => {

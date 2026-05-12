@@ -5,8 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy:github": "ng build --configuration production && npx gh-pages -d dist/portfolio",
+    "deploy:netlify": "ng build --configuration production"
   },
   "private": true,
   "packageManager": "npm@11.9.0",
