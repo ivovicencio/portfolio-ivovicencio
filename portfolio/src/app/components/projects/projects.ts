@@ -1,83 +1,95 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Necesario para el buscador
 
 interface Project {
   title: string;
   category: 'frontend' | 'backend' | 'fullstack';
   description: string;
-  history: string;
+  history?: string;
   tech: string[];
   status: 'completed' | 'in-progress';
-  link: string;
+  repoFront?: string;
+  repoBack?: string;
+  deployUrl?: string;
 }
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })
 export class ProjectsComponent {
   
   activeFilter: string = 'all';
+  searchTerm: string = '';
   selectedProject: Project | null = null;
   isModalOpen: boolean = false;
 
+
   projects: Project[] = [
     {
-      title: 'ServiceGo',
+      title: 'DentalTurnos',
       category: 'fullstack',
-      description: 'Marketplace de servicios técnicos con geolocalización y gestión de turnos.',
-      history: 'La idea nació para conectar técnicos de oficios con usuarios que necesitan soluciones rápidas. El mayor desafío fue estructurar la base de datos en MongoDB para la geolocalización.',
+      description: 'Sistema integral de gestión de turnos e historias clínicas para consultorios odontológicos.',
+      history: 'Desarrollado para optimizar la agenda de los profesionales y digitalizar el historial de los pacientes. El mayor reto fue el manejo de horarios superpuestos.',
       tech: ['Angular', 'Node.js', 'MongoDB', 'Bootstrap'],
       status: 'completed',
-      link: '#'
+      repoFront: 'https://github.com/GabrielIturreCs/Registrar-Turno-Sistema-Clinico',
+      repoBack: 'https://github.com/GabrielIturreCs/SistemaConsultorioBackend',
+      deployUrl: 'https://registrar-turno-sistema-clinico.onrender.com/'
     },
     {
       title: 'Del Rey E-commerce',
       category: 'fullstack',
       description: 'Catálogo dinámico y sistema de ventas para tienda de calzado regional.',
-      history: 'Un proyecto familiar clave. Digitalizamos el inventario físico y armamos un catálogo que permite gestionar stock y consultas de manera intuitiva.',
-      tech: ['Angular', 'C#', 'SQL Server', 'CSS3'],
+      history: 'Un proyecto familiar clave. Digitalizamos el inventario físico y armamos un catálogo intuitivo.',
+      tech: ['Angular', 'Node.js', 'PostgreSQL', 'Docker'],
       status: 'in-progress',
-      link: '#'
+      repoFront: 'https://github.com/ivovicencio/Ecommerce-DelRey',
+      repoBack: 'https://github.com/ivovicencio/Ecommerce-DelRey-backend'
     },
     {
-      title: 'Sistema Fundación',
-      category: 'fullstack',
-      description: 'Plataforma integral para la gestión de donaciones y programas sociales.',
-      history: 'Desarrollo enfocado en la transparencia y facilidad de uso para los administradores de la fundación.',
-      tech: ['React', 'Node.js', 'PostgreSQL'],
-      status: 'in-progress',
-      link: '#'
-    },
-    {
-      title: 'Core API Rest',
+      title: 'Gestión de Paquetería',
       category: 'backend',
-      description: 'Microservicio de autenticación y gestión de usuarios escalable.',
-      history: 'Práctica intensiva de arquitectura backend. Implementé seguridad con JWT y despliegue en contenedores.',
-      tech: ['Java', 'Spring Boot', 'JWT', 'Docker'],
+      description: 'Microservicio de autenticación y gestión de envío y recepción de paquetes.',
+      history: 'Práctica intensiva de arquitectura backend. Implementé seguridad con JWT y despliegue en contenedores en un proyecto colaborativo para la facultad.',
+      tech: ['Java', 'Spring Boot', 'JWT'],
       status: 'completed',
-      link: '#'
+      repoBack: 'https://gitlab.com/ivothaiel/poo2025-grupo15'
     },
     {
       title: 'SoySí Residencia',
-      category: 'frontend',
+      category: 'fullstack',
       description: 'Panel de administración visual para la gestión de residencias estudiantiles.',
-      history: 'Uno de mis primeros grandes retos en UI/UX. Logré transformar un sistema complejo en un panel limpio y fácil de operar para los dueños.',
-      tech: ['Angular', 'TypeScript', 'Tailwind'],
+      history: 'Desarrollo integral para mejorar la gestión interna de la fundación sí.',
+      tech: ['Angular', 'TypeScript', 'Bootstrap', 'JAVA', 'Spring Boot', 'PostgreSQL', 'JWT'],
+      status: 'in-progress',
+      repoFront: 'https://github.com/ivovicencio/SoySi-Front',
+      repoBack: 'https://github.com/ivovicencio/SoySi-Back'
+    },
+    {
+      title: 'Olympo GYM',
+      category: 'frontend',
+      description: 'Proyecto de gimnasio con sistema de gestión de membresías.',
+      history: 'Logré transformar un sistema complejo en un panel limpio y fácil de operar para los dueños.',
+      tech: ['HTML', 'CSS', 'JavaScript'],
       status: 'completed',
-      link: '#'
+      repoFront: 'https://github.com/ivothaiel/OlimpoGym-TP1',
+      deployUrl: 'https://ivothaiel.github.io/OlimpoGym-TP1/'
     }
   ];
 
-  // El getter asegura que Angular re-renderice cuando cambia el filtro
+  // LÓGICA DE FILTRADO Y BÚSQUEDA REAL
   get filteredProjects() {
-    if (this.activeFilter === 'all') {
-      return this.projects;
-    }
-    return this.projects.filter(p => p.category === this.activeFilter);
+    return this.projects.filter(p => {
+      const matchesFilter = this.activeFilter === 'all' || p.category === this.activeFilter;
+      const matchesSearch = p.title.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+                            p.tech.some(t => t.toLowerCase().includes(this.searchTerm.toLowerCase()));
+      return matchesFilter && matchesSearch;
+    });
   }
 
   setFilter(filter: string) {
@@ -87,12 +99,12 @@ export class ProjectsComponent {
   openModal(project: Project) {
     this.selectedProject = project;
     this.isModalOpen = true;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
   }
 
   closeModal() {
     this.isModalOpen = false;
     this.selectedProject = null;
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; // Libera el scroll
   }
 }

@@ -1,3 +1,6 @@
+/* =========================================
+   1. ENTORNO Y GALAXIA 3D (BASE)
+   ========================================= */
 .HeroGalaxyContainer {
   height: 100vh;
   background-color: var(--bg-dark);
@@ -31,7 +34,6 @@
   z-index: 0;
 }
 
-/* AQUÍ SUCEDE LA MAGIA 3D */
 .SolarSystem {
   position: relative;
   width: 100%;
@@ -39,18 +41,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1200px; /* Profundidad de la cámara */
-  transform-style: preserve-3d; /* Activa el renderizado 3D real */
+  perspective: 1200px;
+  transform-style: preserve-3d;
   z-index: 10;
 }
 
+/* =========================================
+   2. NÚCLEO CENTRAL (TU FOTO)
+   ========================================= */
 .CentralCore {
   position: absolute;
   width: 380px; 
-  /* CLAVE: Evita que el contenedor cuadrado invisible tape los íconos */
-  pointer-events: none; 
-  transform: translateZ(0); /* Se planta en el centro exacto del universo */
+  pointer-events: auto; 
+  cursor: pointer;
+  transform: translateZ(0); 
   filter: drop-shadow(0 0 40px rgba(74, 222, 128, 0.15));
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.CentralCore:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 60px rgba(0, 242, 255, 0.4)); /* Brillo azulado al hover */
 }
 
 .ImageMask {
@@ -65,6 +77,24 @@
   animation: floating 8s ease-in-out infinite;
 }
 
+.ClickHint {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #00f2ff; /* Azul Solo Leveling */
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  text-shadow: 0 0 15px #000, 0 0 5px #00f2ff;
+}
+
+.CentralCore:hover .ClickHint {
+  opacity: 1;
+}
+
 .CoreGlow {
   position: absolute;
   top: 50%; left: 50%;
@@ -77,10 +107,12 @@
   z-index: -1;
 }
 
-/* LA ÓRBITA INCLINADA Y ESTILIZADA */
+/* =========================================
+   3. ÓRBITA Y TECNOLOGÍAS
+   ========================================= */
 .OrbitalRing {
   position: absolute;
-  width: 680px; /* Ampliado para que los íconos se alejen más de tu foto */
+  width: 680px; 
   height: 680px;
   border: 2px dashed rgba(74, 222, 128, 0.25);
   border-radius: 50%;
@@ -88,7 +120,6 @@
   transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* LOS ÍCONOS MANTENIDOS DE PIE */
 .PlanetaryIcon {
   position: absolute;
   top: 50%; left: 50%;
@@ -96,7 +127,6 @@
   margin-left: -35px;
   width: 70px;
   height: 70px;
-  /* CLAVE: Rehabilitamos el clic que desactivamos en la foto central */
   pointer-events: auto; 
   cursor: pointer;
 }
@@ -122,25 +152,28 @@
 }
 
 .PlanetaryIcon:hover .IconInner {
-  border-color: var(--accent-green);
-  box-shadow: 0 0 25px rgba(74, 222, 128, 0.6);
+  border-color: #ffcc00; /* Dorado para las habilidades */
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.6);
   transform: scale(1.15);
 }
 
 .PlanetaryIcon.SelectedTech .IconInner {
-  border-color: var(--accent-green);
-  background: rgba(74, 222, 128, 0.15);
-  box-shadow: 0 0 35px var(--accent-green);
+  border-color: #ffcc00;
+  background: rgba(255, 204, 0, 0.15);
+  box-shadow: 0 0 35px #ffcc00;
   animation: techPulse 1.5s infinite;
   transform: scale(1.2);
 }
 
+/* =========================================
+   4. TEXTOS DE FONDO
+   ========================================= */
 .HeroTextMinimal {
   position: absolute;
   bottom: 50px;
   text-align: center;
   width: 100%;
-  z-index: 200;
+  z-index: 50; 
   pointer-events: none;
 }
 
@@ -169,13 +202,227 @@
   font-weight: 600;
 }
 
+/* =========================================
+   5. OVERLAYS GENERALES (MODALES)
+   ========================================= */
+.StatusOverlay, .SkillCardOverlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 10, 20, 0.6);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+   6. STATUS WINDOW (ESTILO SOLO LEVELING)
+   ========================================= */
+.StatusWindow {
+    background: rgba(0, 40, 80, 0.85); /* Fondo azul oscuro transparente */
+    border: 2px solid #00f2ff; /* Borde neón brillante */
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(0, 242, 255, 0.3), inset 0 0 20px rgba(0, 242, 255, 0.2);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    animation: statusAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.WindowHeader {
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #00f2ff;
+    border-bottom: 2px solid #00f2ff;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #00f2ff;
+}
+
+.InfoRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.Label { color: #00f2ff; font-weight: 700; }
+.Value { font-weight: 800; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+
+.StatsDivider {
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    background: rgba(0, 242, 255, 0.2);
+    margin: 30px 0 20px 0;
+    padding: 5px;
+    color: #00f2ff;
+    border-left: 3px solid #00f2ff;
+    border-right: 3px solid #00f2ff;
+}
+
+.SoftSkillsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.SkillBar p { 
+    margin: 0; 
+    font-size: 0.7rem; 
+    font-weight: 700; 
+    letter-spacing: 1.5px; 
+}
+
+.Bar { 
+    height: 6px; 
+    background: rgba(255,255,255,0.1); 
+    margin: 5px 0 0 0; 
+    overflow: hidden; 
+    border-radius: 2px;
+}
+
+.Fill { 
+    height: 100%; 
+    background: linear-gradient(90deg, #00f2ff, #0077ff); 
+    box-shadow: 0 0 15px #00f2ff; 
+    transition: width 1s ease-out;
+}
+
+.OriginData {
+    font-size: 0.65rem;
+    text-align: center;
+    margin-top: 30px;
+    opacity: 0.7;
+    letter-spacing: 2px;
+}
+
+.StatusBtn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #00f2ff;
+    color: #00f2ff;
+    padding: 15px;
+    margin-top: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.StatusBtn:hover { 
+    background: #00f2ff; 
+    color: #000; 
+    box-shadow: 0 0 25px #00f2ff; 
+}
+
+/* =========================================
+   7. SKILL CARD (CARTA DE HABILIDAD)
+   ========================================= */
+.SkillCard {
+    background: rgba(0, 20, 40, 0.9);
+    border: 2px solid #ffcc00; /* Borde dorado */
+    width: 320px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 204, 0, 0.3), inset 0 0 15px rgba(255, 204, 0, 0.1);
+    animation: skillAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.SkillHeader { 
+    color: #ffcc00; 
+    font-size: 0.75rem; 
+    font-weight: 900; 
+    letter-spacing: 3px; 
+    margin-bottom: 25px; 
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.SkillIcon { 
+    width: 70px; 
+    height: 70px; 
+    margin-bottom: 20px; 
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.SkillTitle { 
+    color: #fff; 
+    font-size: 1.6rem; 
+    font-weight: 900; 
+    margin-bottom: 15px; 
+    letter-spacing: 2px;
+}
+
+.SkillDesc { 
+    font-size: 0.85rem; 
+    color: #cbd5e1; 
+    line-height: 1.5; 
+    margin-bottom: 25px; 
+}
+
+.MasteryContainer { 
+    font-size: 0.75rem; 
+    color: #ffcc00; 
+    font-weight: 800; 
+    letter-spacing: 1px;
+}
+
+.MasteryBar { 
+    height: 8px; 
+    background: rgba(255,255,255,0.1); 
+    margin-top: 8px; 
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.MasteryBar .Fill { 
+    background: #ffcc00; 
+    box-shadow: 0 0 15px #ffcc00; 
+}
+
+.CloseSkill {
+    background: transparent;
+    border: none;
+    color: #ffcc00;
+    margin-top: 25px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    cursor: pointer;
+    letter-spacing: 3px;
+    transition: 0.3s;
+}
+
+.CloseSkill:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #ffcc00;
+}
+
+/* =========================================
+   8. ANIMACIONES (KEYFRAMES)
+   ========================================= */
 @keyframes floating {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
 
 @keyframes techPulse {
-  0% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.4); }
-  50% { box-shadow: 0 0 40px rgba(74, 222, 128, 0.8); }
-  100% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.4); }
+  0% { box-shadow: 0 0 20px rgba(255, 204, 0, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(255, 204, 0, 0.8); }
+  100% { box-shadow: 0 0 20px rgba(255, 204, 0, 0.4); }
+}
+
+@keyframes statusAppear { 
+    from { opacity: 0; transform: scale(0.9) translateY(20px); } 
+    to { opacity: 1; transform: scale(1) translateY(0); } 
+}
+
+@keyframes skillAppear { 
+    from { opacity: 0; transform: translateY(40px) scale(0.95); } 
+    to { opacity: 1; transform: translateY(0) scale(1); } 
 }

@@ -34,6 +34,51 @@
   color: var(--accent-green);
 }
 
+/* --- BUSCADOR --- */
+.ControlsWrapper {
+  position: relative;
+  z-index: 10;
+}
+
+.SearchBox {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 20px;
+  background: rgba(11, 19, 23, 0.8);
+  width: 100%;
+  max-width: 500px;
+  border-radius: 2px;
+  transition: border-color 0.3s;
+}
+
+.SearchBox:focus-within {
+  border-color: var(--accent-green);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+
+.Prefix {
+  color: var(--accent-green);
+  font-weight: bold;
+  margin-right: 15px;
+  animation: blinker 1s infinite;
+}
+
+.CyberInput {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 100%;
+  font-size: 0.85rem;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.CyberInput::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- FILTROS --- */
 .FilterContainer button {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -53,6 +98,7 @@
   box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
 }
 
+/* --- TARJETAS --- */
 .ProjectCard {
   background: rgba(11, 19, 23, 0.8);
   backdrop-filter: blur(10px);
@@ -167,9 +213,7 @@
   border-left: 3px solid #ffc107;
 }
 
-/* =========================================
-   ESTILOS EXCLUSIVOS DEL MODAL CYBERPUNK
-   ========================================= */
+/* --- MODAL FLOTANTE --- */
 .ModalOverlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
@@ -241,6 +285,42 @@
   border-color: rgba(74, 222, 128, 0.3);
   color: var(--accent-green);
   background: rgba(74, 222, 128, 0.05);
+}
+
+.LinksGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.LinkBtn {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.LinkBtn:hover {
+  border-color: var(--accent-green);
+  background: rgba(74, 222, 128, 0.1);
+  color: var(--accent-green);
+}
+
+.LinkBtn.Deploy {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.LinkBtn.Deploy:hover {
+  background: var(--accent-green);
+  color: #000;
 }
 
 @keyframes blinker { 50% { opacity: 0; } }

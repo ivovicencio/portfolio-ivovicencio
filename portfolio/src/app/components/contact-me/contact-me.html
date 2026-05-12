@@ -1,1 +1,81 @@
-<p>contact-me works!</p>
+<section class="ContactSection">
+  <div class="CyberGrid"></div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      
+      <div class="col-12 text-center mb-5">
+          <div class="SectionTag">ESTABLECIENDO CONEXIÓN_</div>
+          <h2 class="MainTitle">CONTACTO<span class="Blink">_</span></h2>
+      </div>
+
+      <div class="col-lg-4 mb-5">
+        <div class="NodeContainer">
+          <h3 class="NodeTitle">ENLACES_DE_RED</h3>
+          <div class="SocialNodes">
+            <a href="mailto:tu-correo@gmail.com" class="NodeItem Gmail">
+              <i class="bi bi-envelope-fill"></i>
+              <div class="NodeInfo"><span>GMAIL</span><p>Enviar Mensaje Directo</p></div>
+            </a>
+            <a href="https://linkedin.com/in/tu-user" target="_blank" class="NodeItem Linkedin">
+              <i class="bi bi-linkedin"></i>
+              <div class="NodeInfo"><span>LINKEDIN</span><p>Perfil Profesional</p></div>
+            </a>
+            <a href="https://github.com/tu-user" target="_blank" class="NodeItem Github">
+              <i class="bi bi-github"></i>
+              <div class="NodeInfo"><span>GITHUB</span><p>Repositorios de Código</p></div>
+            </a>
+            <a href="https://instagram.com/tu-user" target="_blank" class="NodeItem Instagram">
+              <i class="bi bi-instagram"></i>
+              <div class="NodeInfo"><span>INSTAGRAM</span><p>Contenido Visual</p></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="MissionWindow">
+          <div class="WindowBorder"></div>
+          <div class="WindowHeader">SOLICITUD DE MISIÓN</div>
+          
+          <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="InputGroup">
+                  <label>NOMBRE_DEL_EMISOR</label>
+                  <input type="text" name="name" [(ngModel)]="contactData.name" required placeholder="Ingresar nombre...">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="InputGroup">
+                  <label>CANAL_DE_RETORNO (EMAIL)</label>
+                  <input type="email" name="email" [(ngModel)]="contactData.email" required placeholder="correo@ejemplo.com">
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="InputGroup">
+                  <label>ASUNTO_DEL_MENSAJE</label>
+                  <input type="text" name="subject" [(ngModel)]="contactData.subject" required placeholder="Motivo de contacto...">
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="InputGroup">
+                  <label>DETALLES_DE_LA_MISIÓN</label>
+                  <textarea name="message" [(ngModel)]="contactData.message" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="SubmitBtn" [disabled]="!contactForm.form.valid || sendStatus === 'sending'">
+                  <span *ngIf="sendStatus === 'idle'">INICIAR TRANSMISIÓN_</span>
+                  <span *ngIf="sendStatus === 'sending'">ENVIANDO DATOS...</span>
+                  <span *ngIf="sendStatus === 'success'" class="TextAccent">¡MENSAJE RECIBIDO!</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
