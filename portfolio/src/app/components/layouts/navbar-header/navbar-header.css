@@ -8,3 +8,55 @@
 .Brand { font-weight: 900; color: #fff; letter-spacing: 2px; font-size: 1.4rem; text-decoration: none; }
 .NavCustom { color: var(--text-secondary); font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; }
 .ActiveLink { color: var(--accent-green) !important; }
+
+/* ========== RESPONSIVO ========== */
+/* TABLET (768px - 991px) */
+@media (max-width: 991px) {
+  .Brand {
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+  }
+
+  .NavCustom {
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+  }
+
+  .NavbarGlass {
+    padding: 15px 0;
+  }
+}
+
+/* MOBILE (480px - 767px) */
+@media (max-width: 767px) {
+  .Brand {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .NavCustom {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+
+  .NavbarGlass {
+    padding: 12px 0;
+  }
+}
+
+/* CELULARES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  .Brand {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .NavCustom {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+  }
+
+  .NavbarGlass {
+    padding: 10px 0;
+  }
+}

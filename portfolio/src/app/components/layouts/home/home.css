@@ -426,3 +426,296 @@
     from { opacity: 0; transform: translateY(40px) scale(0.95); } 
     to { opacity: 1; transform: translateY(0) scale(1); } 
 }
+
+/* ========== RESPONSIVO ========== */
+/* TABLET (768px - 991px) */
+@media (max-width: 991px) {
+  .HeroGalaxyContainer {
+    height: auto;
+    min-height: 100vh;
+    padding: 40px 0;
+  }
+
+  .NebulaSmoke {
+    width: 500px;
+    height: 500px;
+    filter: blur(150px);
+  }
+
+  .StarsBackground {
+    background-size: 40px 40px;
+  }
+
+  .CentralCore {
+    width: 250px;
+  }
+
+  .OrbitalRing {
+    width: 450px;
+    height: 450px;
+  }
+
+  .PlanetaryIcon {
+    width: 55px;
+    height: 55px;
+    margin-top: -27px;
+    margin-left: -27px;
+  }
+
+  .IconInner {
+    padding: 10px;
+  }
+
+  .TitleMinimal {
+    font-size: 2rem;
+  }
+
+  .SubtitleMinimal {
+    font-size: 0.8rem;
+  }
+
+  .StatusWindow {
+    width: 95%;
+    padding: 25px;
+  }
+
+  .SkillCard {
+    width: 280px;
+    padding: 25px 20px;
+  }
+}
+
+/* MOBILE (480px - 767px) */
+@media (max-width: 767px) {
+  .HeroGalaxyContainer {
+    height: auto;
+    min-height: 100vh;
+    padding: 30px 0;
+  }
+
+  .NebulaSmoke {
+    width: 350px;
+    height: 350px;
+    filter: blur(100px);
+  }
+
+  .StarsBackground {
+    background-size: 30px 30px;
+    opacity: 0.05;
+  }
+
+  .CentralCore {
+    width: 180px;
+  }
+
+  .ClickHint {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .OrbitalRing {
+    width: 320px;
+    height: 320px;
+  }
+
+  .PlanetaryIcon {
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+  }
+
+  .IconInner {
+    padding: 8px;
+    border-width: 1.5px;
+  }
+
+  .HeroTextMinimal {
+    bottom: 30px;
+  }
+
+  .TitleMinimal {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+  }
+
+  .SubtitleMinimal {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+  }
+
+  .LocationMinimal {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    margin-top: 15px;
+  }
+
+  .StatusWindow {
+    width: 95%;
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .WindowHeader {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  .InfoRow {
+    font-size: 0.75rem;
+    margin-bottom: 12px;
+  }
+
+  .StatsDivider {
+    font-size: 0.65rem;
+    margin: 20px 0 15px 0;
+  }
+
+  .SkillBar p {
+    font-size: 0.65rem;
+  }
+
+  .StatusBtn {
+    padding: 12px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-top: 20px;
+  }
+
+  .SkillCard {
+    width: 100%;
+    max-width: 320px;
+    padding: 20px 15px;
+  }
+
+  .SkillHeader {
+    font-size: 0.7rem;
+    margin-bottom: 20px;
+  }
+
+  .SkillIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .SkillTitle {
+    font-size: 1.4rem;
+  }
+
+  .SkillDesc {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+
+  .MasteryContainer {
+    font-size: 0.7rem;
+  }
+
+  .MasteryBar {
+    height: 6px;
+    margin-top: 6px;
+  }
+
+  .CloseSkill {
+    font-size: 0.65rem;
+    margin-top: 20px;
+  }
+}
+
+/* CELULARES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  .HeroGalaxyContainer {
+    padding: 20px 0;
+  }
+
+  .NebulaSmoke {
+    width: 250px;
+    height: 250px;
+    filter: blur(80px);
+  }
+
+  .StarsBackground {
+    background-size: 20px 20px;
+    opacity: 0.03;
+  }
+
+  .CentralCore {
+    width: 140px;
+  }
+
+  .CoreGlow {
+    width: 150px;
+    height: 150px;
+    filter: blur(60px);
+  }
+
+  .ClickHint {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+  }
+
+  .OrbitalRing {
+    width: 250px;
+    height: 250px;
+    border-width: 1.5px;
+  }
+
+  .PlanetaryIcon {
+    width: 45px;
+    height: 45px;
+    margin-top: -22px;
+    margin-left: -22px;
+  }
+
+  .IconInner {
+    padding: 6px;
+    border-width: 1px;
+  }
+
+  .TitleMinimal {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+  }
+
+  .SubtitleMinimal {
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+  }
+
+  .LocationMinimal {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+  }
+
+  .StatusWindow {
+    padding: 15px;
+  }
+
+  .WindowHeader {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .InfoRow {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
+
+  .SkillCard {
+    padding: 15px 12px;
+  }
+
+  .SkillIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .SkillTitle {
+    font-size: 1.2rem;
+  }
+
+  .SkillDesc {
+    font-size: 0.75rem;
+  }
+}

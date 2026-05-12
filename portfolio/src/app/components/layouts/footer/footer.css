@@ -102,3 +102,99 @@
   bottom: -150px;
   right: -100px;
 }
+
+/* ========== RESPONSIVO ========== */
+/* TABLET (768px - 991px) */
+@media (max-width: 991px) {
+  .FooterBrand {
+    font-size: 1.5rem;
+    letter-spacing: 2.5px;
+  }
+
+  .LocationText {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+  }
+
+  .FooterNav li a {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .GlassIcon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  .BottomText {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* MOBILE (480px - 767px) */
+@media (max-width: 767px) {
+  .FooterBrand {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .LocationText {
+    font-size: 0.7rem;
+    letter-spacing: 1.2px;
+  }
+
+  .FooterNav li a {
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+  }
+
+  .GlassIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .GlassIcon:hover {
+    transform: translateY(-5px) rotate(5deg);
+  }
+
+  .BottomText {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* CELULARES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  .FooterBrand {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+  }
+
+  .LocationText {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+
+  .FooterNav li a {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+
+  .GlassIcon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .GlassIcon:hover {
+    transform: translateY(-3px) rotate(3deg);
+  }
+
+  .BottomText {
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+  }
+}

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact-me',
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './contact-me.html',
   styleUrl: './contact-me.css'
 })
-export class ContactMe {
+export class ContactMe implements OnInit {
 
   contactData = {
     name: '',
@@ -18,21 +19,49 @@ export class ContactMe {
     message: ''
   };
 
-  sendStatus: 'idle' | 'sending' | 'success' = 'idle';
+  sendStatus: 'idle' | 'sending' | 'success' | 'error' = 'idle';
+  errorMessage = '';
+
+  ngOnInit() {
+    // INICIALIZAMOS CON TU PUBLIC KEY
+    emailjs.init('bLCSUBdBPb70rHOPO'); 
+  }
 
   onSubmit() {
+    if (!this.contactData.name || !this.contactData.email || !this.contactData.subject || !this.contactData.message) {
+      this.sendStatus = 'error';
+      this.errorMessage = 'Todos los campos son requeridos';
+      return;
+    }
+
     this.sendStatus = 'sending';
-    
-    // Simulación de envío (Acá conectarías con EmailJS o Formspree)
-    console.log('Iniciando transmisión de datos...', this.contactData);
-    
-    setTimeout(() => {
-      this.sendStatus = 'success';
-      // Reset del formulario después de enviar
-      this.contactData = { name: '', email: '', subject: '', message: '' };
-      
-      // Volver al estado normal después de 5 segundos
-      setTimeout(() => this.sendStatus = 'idle', 5000);
-    }, 2000);
+
+    // AJUSTADO PARA COINCIDIR EXACTAMENTE CON LAS VARIABLES DE TU TEMPLATE
+    const templateParams = {
+      name: this.contactData.name,         // Conecta con {{name}}
+      email: this.contactData.email,       // Conecta con {{email}}
+      title: this.contactData.subject,     // Conecta con {{title}}
+      message: this.contactData.message,   // Conecta con {{message}}
+      to_email: 'ivothaielvicencio@gmail.com'
+    };
+
+    // ENVIAMOS USANDO TU SERVICE ID Y TEMPLATE ID
+    emailjs.send('service_4kq4j07', 'template_fd4lwap', templateParams)
+      .then(
+        (response) => {
+          console.log('Email enviado exitosamente:', response);
+          this.sendStatus = 'success';
+          this.contactData = { name: '', email: '', subject: '', message: '' };
+          
+          setTimeout(() => this.sendStatus = 'idle', 5000);
+        },
+        (error) => {
+          console.error('Error al enviar email:', error);
+          this.sendStatus = 'error';
+          this.errorMessage = 'Error al enviar el mensaje. Por favor intenta nuevamente.';
+          
+          setTimeout(() => this.sendStatus = 'idle', 5000);
+        }
+      );
   }
 }

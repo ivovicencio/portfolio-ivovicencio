@@ -69,6 +69,7 @@
                   <span *ngIf="sendStatus === 'idle'">INICIAR TRANSMISIÓN_</span>
                   <span *ngIf="sendStatus === 'sending'">ENVIANDO DATOS...</span>
                   <span *ngIf="sendStatus === 'success'" class="TextAccent">¡MENSAJE RECIBIDO!</span>
+                  <span *ngIf="sendStatus === 'error'" class="TextError">ERROR: {{errorMessage}}</span>
                 </button>
               </div>
             </div>

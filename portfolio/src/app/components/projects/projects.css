@@ -332,3 +332,299 @@
   0% { top: 0; }
   100% { top: 100%; }
 }
+
+/* ========== RESPONSIVO ========== */
+/* TABLET (768px - 991px) */
+@media (max-width: 991px) {
+  .ProjectsSection {
+    padding: 80px 0;
+  }
+
+  .DisplayTitle {
+    font-size: 2.5rem;
+    letter-spacing: 8px;
+  }
+
+  .Subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+  }
+
+  .SearchBox {
+    max-width: 100%;
+  }
+
+  .CyberInput {
+    font-size: 0.8rem;
+  }
+
+  .FilterContainer button {
+    padding: 8px 15px;
+    font-size: 0.7rem;
+  }
+
+  .ProjectCard {
+    padding: 25px;
+  }
+
+  .ProjectTitle {
+    font-size: 1.2rem;
+    margin: 15px 0 8px 0;
+  }
+
+  .ProjectDesc {
+    font-size: 0.85rem;
+  }
+
+  .TechIcon {
+    font-size: 0.6rem;
+    padding: 3px 8px;
+  }
+
+  .ModalContent {
+    max-width: 90%;
+    padding: 30px;
+  }
+
+  .ModalTitle {
+    font-size: 1.8rem;
+  }
+
+  .HistoryText {
+    font-size: 0.9rem;
+  }
+}
+
+/* MOBILE (480px - 767px) */
+@media (max-width: 767px) {
+  .ProjectsSection {
+    padding: 60px 20px;
+  }
+
+  .GridOverlay {
+    background-size: 30px 30px;
+  }
+
+  .DisplayTitle {
+    font-size: 1.8rem;
+    letter-spacing: 6px;
+  }
+
+  .Subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  .ControlsWrapper {
+    margin-bottom: 30px;
+  }
+
+  .SearchBox {
+    max-width: 100%;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+  }
+
+  .Prefix {
+    margin-right: 10px;
+    font-size: 0.85rem;
+  }
+
+  .CyberInput {
+    font-size: 0.75rem;
+  }
+
+  .FilterContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .FilterContainer button {
+    padding: 8px 12px;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+  }
+
+  .ProjectCard {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .CategoryTag {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+  }
+
+  .StatusTag {
+    font-size: 0.55rem;
+    padding: 2px 6px;
+  }
+
+  .ProjectTitle {
+    font-size: 1.1rem;
+    margin: 12px 0 6px 0;
+  }
+
+  .ProjectDesc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .TechStack {
+    gap: 6px;
+    margin-top: 15px;
+  }
+
+  .TechIcon {
+    font-size: 0.55rem;
+    padding: 3px 7px;
+  }
+
+  .CardFooter {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .ViewButton {
+    font-size: 0.7rem;
+  }
+
+  .ModalOverlay {
+    padding: 15px;
+  }
+
+  .ModalContent {
+    max-width: 100%;
+    padding: 25px;
+  }
+
+  .CloseModal {
+    font-size: 1.2rem;
+    top: 10px;
+    right: 15px;
+  }
+
+  .ModalTitle {
+    font-size: 1.5rem;
+    margin: 5px 0 20px 0;
+  }
+
+  .HistoryTitle {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+  .HistoryText {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .LinksGrid {
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .LinkBtn {
+    padding: 8px 15px;
+    font-size: 0.65rem;
+  }
+}
+
+/* CELULARES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  .ProjectsSection {
+    padding: 40px 15px;
+  }
+
+  .GridOverlay {
+    background-size: 20px 20px;
+  }
+
+  .DisplayTitle {
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+  }
+
+  .Subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+
+  .SearchBox {
+    padding: 6px 12px;
+    margin-bottom: 12px;
+  }
+
+  .Prefix {
+    margin-right: 8px;
+    font-size: 0.75rem;
+  }
+
+  .CyberInput {
+    font-size: 0.7rem;
+  }
+
+  .FilterContainer button {
+    padding: 6px 10px;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+
+  .ProjectCard {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .ProjectCard::before {
+    border-width: 0 15px 15px 0;
+  }
+
+  .CategoryTag {
+    font-size: 0.55rem;
+  }
+
+  .ProjectTitle {
+    font-size: 1rem;
+    margin: 10px 0 5px 0;
+  }
+
+  .ProjectDesc {
+    font-size: 0.75rem;
+  }
+
+  .TechIcon {
+    font-size: 0.5rem;
+    padding: 2px 6px;
+  }
+
+  .CardFooter {
+    margin-top: 15px;
+    flex-direction: column;
+  }
+
+  .DecorativeBar {
+    width: 20px;
+  }
+
+  .ModalContent {
+    padding: 20px;
+  }
+
+  .ModalTitle {
+    font-size: 1.3rem;
+    margin: 0 0 18px 0;
+  }
+
+  .HistoryText {
+    font-size: 0.8rem;
+  }
+
+  .LinkBtn {
+    padding: 7px 12px;
+    font-size: 0.6rem;
+    flex: 1;
+  }
+}
