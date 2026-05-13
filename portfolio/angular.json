@@ -29,11 +29,12 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "baseHref": "/",
+              "baseHref": "/portfolio-ivovicencio/",
               "budgets": [
                 {
                   "type": "initial",
